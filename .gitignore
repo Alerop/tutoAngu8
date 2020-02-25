@@ -7,6 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# to keep update our dependencies
+package-lock.json
+
 # dependencies
 /node_modules
 
