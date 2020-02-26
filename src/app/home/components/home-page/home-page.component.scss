@@ -1,0 +1,9 @@
+$headerSize: 64px;
+
+.content {
+  position: relative;
+  top: $headerSize;
+  height: calc(100% - #{$headerSize});
+  background-color: coral;
+  z-index: 2;
+}
