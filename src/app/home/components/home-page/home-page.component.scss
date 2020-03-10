@@ -7,3 +7,24 @@ $headerSize: 64px;
   background-color: coral;
   z-index: 2;
 }
+
+.angM-table {
+  position: relative;
+  top: 10px;
+  width: 80%;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
