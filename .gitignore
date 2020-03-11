@@ -25,6 +25,8 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
+/doc/**.tmp
+~$w to Angular8.docx
 
 # IDE - VSCode
 .vscode/*
