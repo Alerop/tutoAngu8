@@ -13,6 +13,10 @@ $headerSize: 64px;
   top: 10px;
   width: 80%;
   margin: auto;
+  div.mat-elevation-z8 {
+    overflow: auto;
+    max-height: 540px;
+  }
 }
 
 table {
@@ -22,6 +26,11 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+mat-paginator {
+  position: relative;
+  z-index: 1;
 }
 
 td,
