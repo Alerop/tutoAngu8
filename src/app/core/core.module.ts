@@ -9,6 +9,7 @@ import { UserService } from './services/user.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
         RouterModule,
         MatToolbarModule,
         MatIconModule,
-        MatButtonModule
+        HttpClientModule
     ],
     providers: [
         UserService
