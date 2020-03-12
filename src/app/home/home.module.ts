@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { SharedModule } from '../shared/shared/shared.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -23,6 +24,7 @@ import { SharedModule } from '../shared/shared/shared.module';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     SharedModule
   ],
   exports: [

@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared/shared.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { SharedModule } from '../shared/shared/shared.module';
     declarations: [
         HeaderComponent,
         FooterComponent,
+        NotFoundComponent,
     ],
     exports: [
         HeaderComponent,
