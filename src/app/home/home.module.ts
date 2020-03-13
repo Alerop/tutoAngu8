@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomePageComponent } from './components/home-page/home-page.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +16,7 @@ import { PostPageComponent } from './components/post-page/post-page.component';
 
 @NgModule({
   declarations: [
-    HomePageComponent,
+    UserPageComponent,
     WelcomePageComponent,
     PostPageComponent
   ],
@@ -30,7 +30,7 @@ import { PostPageComponent } from './components/post-page/post-page.component';
     SharedModule
   ],
   exports: [
-    HomePageComponent,
+    UserPageComponent,
     PostPageComponent
   ]
 })

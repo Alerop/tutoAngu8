@@ -8,11 +8,11 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  selector: 'app-user-page',
+  templateUrl: './user-page.component.html',
+  styleUrls: ['./user-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class UserPageComponent implements OnInit {
 
   //table properties
   displayedColumns: string[];
@@ -49,7 +49,7 @@ export class HomePageComponent implements OnInit {
    * @description
    * Request to the UserService from core.module the user data
    * 
-   * @memberof HomePageComponent
+   * @memberof UserPageComponent
    */
   requestUsers(): void {
     this.showSpinner = true;
@@ -75,7 +75,7 @@ export class HomePageComponent implements OnInit {
    * Function used to filter the data looking for some result that equal with the value in the input
    * 
    * @param {Event} event
-   * @memberof HomePageComponent
+   * @memberof UserPageComponent
    */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
