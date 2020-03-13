@@ -10,13 +10,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { SharedModule } from '../shared/shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PostPageComponent } from './components/post-page/post-page.component';
 
 
 
 @NgModule({
   declarations: [
     HomePageComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    PostPageComponent
   ],
   imports: [
     MatTableModule,
@@ -28,7 +30,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     SharedModule
   ],
   exports: [
-    HomePageComponent
+    HomePageComponent,
+    PostPageComponent
   ]
 })
 export class HomeModule { }

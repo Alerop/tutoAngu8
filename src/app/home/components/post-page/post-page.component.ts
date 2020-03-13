@@ -1,22 +1,22 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from 'src/app/core/interfaces/user-interface';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { UserService } from 'src/app/core/services/user.service';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../interfaces/post-interface';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  selector: 'app-post-page',
+  templateUrl: './post-page.component.html',
+  styleUrls: ['./post-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
-
+export class PostPageComponent implements OnInit {
   //table properties
   displayedColumns: string[];
-  dataSource: MatTableDataSource<User>;
+  dataSource: MatTableDataSource<any>;//should post interface
 
   //paginator properties
   pageSizeOptions: number[];
@@ -30,8 +30,8 @@ export class HomePageComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(public userService: UserService) {
-    this.displayedColumns = ['id', 'name', 'username', 'email', 'phone', 'website'];
+  constructor(public postService: PostService) {
+    this.displayedColumns = ['id', 'name', 'username', 'email', 'phone', 'website'];//update with the columns that we want show
     this.color = 'accent';
     this.mode = 'indeterminate';
     this.value = 50;
@@ -40,30 +40,30 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource === undefined ? this.requestUsers() : console.warn(`The data is already loaded.`);
+    this.dataSource === undefined ? this.requestPosts() : console.warn(`The data is already loaded.`);
 
   }
 
   /**
-   * @name requestUsers
+   * @name requestPosts
    * @description
    * Request to the UserService from core.module the user data
    * 
-   * @memberof HomePageComponent
+   * @memberof PostPageComponent
    */
-  requestUsers(): void {
+  requestPosts(): void {
     this.showSpinner = true;
-    this.userService.getUsers().subscribe(
-      (usersData) => {
-        this.dataSource = new MatTableDataSource(usersData);
+    this.postService.getPosts().subscribe(
+      (postsData: Post[]) => {
+        this.dataSource = new MatTableDataSource(postsData);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        console.log(usersData);
+        console.log(postsData);
         this.showSpinner = false;
 
       },
-      (usersError) => {
-        console.error(`The request is failed: ${usersError}`);
+      (postsError: Error) => {
+        console.error(`The request is failed: ${postsError}`);
         this.showSpinner = false;
 
       });
@@ -75,9 +75,9 @@ export class HomePageComponent implements OnInit {
    * Function used to filter the data looking for some result that equal with the value in the input
    * 
    * @param {Event} event
-   * @memberof HomePageComponent
+   * @memberof PostPageComponent
    */
-  applyFilter(event: Event) {
+  applyFilter(event: Event) {//this function can be in shared inside of util folder
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
