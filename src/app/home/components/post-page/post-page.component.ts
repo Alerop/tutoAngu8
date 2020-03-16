@@ -4,7 +4,6 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { UserService } from 'src/app/core/services/user.service';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post-interface';
 
@@ -16,7 +15,7 @@ import { Post } from '../../interfaces/post-interface';
 export class PostPageComponent implements OnInit {
   //table properties
   displayedColumns: string[];
-  dataSource: MatTableDataSource<any>;//should post interface
+  dataSource: MatTableDataSource<Post>;
 
   //paginator properties
   pageSizeOptions: number[];
@@ -31,7 +30,7 @@ export class PostPageComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(public postService: PostService) {
-    this.displayedColumns = ['id', 'name', 'username', 'email', 'phone', 'website'];//update with the columns that we want show
+    this.displayedColumns = ['id', 'title', 'body', 'userId'];
     this.color = 'accent';
     this.mode = 'indeterminate';
     this.value = 50;
@@ -67,6 +66,38 @@ export class PostPageComponent implements OnInit {
         this.showSpinner = false;
 
       });
+  }
+
+  formPost(): void {
+    console.log('should load a modal to fullfill a form to add new posts');
+    this.showSpinner = true;
+    //mockdata
+    const title = "Awi, la mejor awita del mercado";
+    const body = "Resulta que hace milenios existía el agua awi, lo que acabó marcado una nueva linguistica para el agua, la cual acabó transformandose en awita.";
+    const userId = 1;
+
+    this.postService.addPost(userId, title, body).subscribe(
+      (postData) => {
+        console.log('data: ', postData);
+        this.requestPosts();
+      },
+      (postError: Error) => {
+        console.error('error', postError);
+        this.showSpinner = false;
+
+      }
+    );
+  }
+
+  getPost(idPost: number): void {
+    this.postService.getPost(idPost).subscribe(
+      (postData) => {
+        console.log(postData);
+      },
+      (postError: Error) => {
+        console.error(postError);
+      }
+    );
   }
 
   /**

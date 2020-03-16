@@ -27,4 +27,19 @@ export class PostService {
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.basePath}posts`);
   }
+
+  getPost(idPost: number): Observable<Post> {
+    const result = this.http.get<Post>(`${this.basePath}post/${idPost}`);
+    return result;
+  }
+
+  addPost(userId: number, title: string, body: string): Observable<Object> {
+    const newPost = {
+      userId,
+      title,
+      body
+    }
+    const result = this.http.post(`${this.basePath}posts`, newPost)
+    return result;
+  }
 }

@@ -5,6 +5,15 @@ $spinnerSize: 100px;
   position: relative;
   top: $headerSize;
   height: calc(100% - #{$headerSize});
+
+  .filter {
+    display: block;
+  }
+  div.buttons {
+    button[mat-raised-button] {
+      margin-right: 5px;
+    }
+  }
 }
 
 div.spinner {

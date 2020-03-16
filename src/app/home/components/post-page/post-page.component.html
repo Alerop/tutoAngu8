@@ -1,17 +1,19 @@
 <div class="content">
-  <div class="spinner" [hidden]="!showSpinner">
-    <!-- Spinner -->
-    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
-    </mat-progress-spinner>
-  </div>
-  <div class="angM-table" [hidden]="showSpinner">
-    <!-- Filter -->
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ervin">
-    </mat-form-field>
+  <div class="angM-table">
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="formPost()">New Post</button>
+      <button mat-raised-button color="primary" (click)="getPost(101)">Get Post 101</button>
+    </div>
 
-    <div class="mat-elevation-z8">
+    <div class="filter" [hidden]="showSpinner">
+      <!-- Filter -->
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ervin">
+      </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8" [hidden]="showSpinner">
       <!-- Table -->
       <mat-table [dataSource]="dataSource" matSort>
 
@@ -21,39 +23,32 @@
           <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
         </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        <!-- UserID Column -->
+        <ng-container matColumnDef="userId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> UserID </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.userId}} </mat-cell>
         </ng-container>
 
-        <!-- Username Column -->
-        <ng-container matColumnDef="username">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
         </ng-container>
 
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
-        </ng-container>
-
-        <!-- Phone Column -->
-        <ng-container matColumnDef="phone">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.phone}} </mat-cell>
-        </ng-container>
-
-        <!-- Website Column -->
-        <ng-container matColumnDef="website">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Website </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.website}} </mat-cell>
+        <!-- Body Column -->
+        <ng-container matColumnDef="body">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Body </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.body}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
+    </div>
+    <div class="spinner" [hidden]="!showSpinner">
+      <!-- Spinner -->
+      <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
+      </mat-progress-spinner>
     </div>
     <!-- Paginator -->
     <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
