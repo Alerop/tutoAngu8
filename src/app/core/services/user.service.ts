@@ -24,6 +24,7 @@ export class UserService {
    * @memberof UserService
    */
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.basePath}users`);
+    const result = this.http.get<User[]>(`${this.basePath}users`);
+    return result;
   }
 }

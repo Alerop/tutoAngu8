@@ -1,11 +1,12 @@
 <div class="content">
-  <div class="angM-table">
+  <div class="angM-table" [hidden]="showSpinner">
     <div class="buttons">
-      <button mat-raised-button color="primary" (click)="formPost()">New Post</button>
-      <button mat-raised-button color="primary" (click)="getPost(101)">Get Post 101</button>
+      <button mat-raised-button color="accent" (click)="formPost()">New Post</button>
+      <button mat-raised-button color="primary" (click)="getPost(76)">Get Post 76</button>
+      <button mat-raised-button color="warn" (click)="deletePost(76)">Delete Post 76</button>
     </div>
 
-    <div class="filter" [hidden]="showSpinner">
+    <div class="filter">
       <!-- Filter -->
       <mat-form-field>
         <mat-label>Filter</mat-label>
@@ -45,12 +46,12 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
-    <div class="spinner" [hidden]="!showSpinner">
-      <!-- Spinner -->
-      <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
-      </mat-progress-spinner>
-    </div>
     <!-- Paginator -->
     <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+  </div>
+  <div class="spinner" [hidden]="!showSpinner">
+    <!-- Spinner -->
+    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
   </div>
 </div>

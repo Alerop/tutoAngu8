@@ -68,11 +68,19 @@ export class PostPageComponent implements OnInit {
       });
   }
 
+
+  /**
+   * @name formPost
+   * @description
+   * Function that will open a modal that will contain the inputs to add a new Post
+   * 
+   * @memberof PostPageComponent
+   */
   formPost(): void {
     console.log('should load a modal to fullfill a form to add new posts');
     this.showSpinner = true;
     //mockdata
-    const title = "Awi, la mejor awita del mercado";
+    const title = "Awi, la mejor aguita del mercado";
     const body = "Resulta que hace milenios existía el agua awi, lo que acabó marcado una nueva linguistica para el agua, la cual acabó transformandose en awita.";
     const userId = 1;
 
@@ -89,15 +97,45 @@ export class PostPageComponent implements OnInit {
     );
   }
 
+  /**
+   * @mane getPost
+   * @description
+   * Function used to call postService to subscribe the method to get a Post by id
+   * 
+   * @param {number} idPost
+   * @memberof PostPageComponent
+   */
   getPost(idPost: number): void {
     this.postService.getPost(idPost).subscribe(
-      (postData) => {
+      (postData: Post) => {
         console.log(postData);
       },
       (postError: Error) => {
         console.error(postError);
       }
     );
+  }
+
+  /**
+   * @name deletePost
+   * @description
+   * Function used to delete a Post by id
+   * 
+   * @param {number} idPost
+   * @memberof PostPageComponent
+   */
+  deletePost(idPost: number): void {
+    this.showSpinner = true;
+    this.postService.deletePost(idPost).subscribe(
+      (deleteData: Post) => {
+        console.log('data', deleteData);
+        this.requestPosts();
+      },
+      (deleteError: Error) => {
+        console.error('error', deleteError);
+        this.showSpinner = false;
+      }
+    )
   }
 
   /**
