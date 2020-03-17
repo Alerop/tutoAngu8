@@ -10,14 +10,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared/shared.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
     imports: [
-        CommonModule,
         RouterModule,
         MatToolbarModule,
         MatIconModule,
-        HttpClientModule
+        HttpClientModule,
+        SharedModule
     ],
     providers: [
         UserService
@@ -25,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     declarations: [
         HeaderComponent,
         FooterComponent,
+        NotFoundComponent,
     ],
     exports: [
         HeaderComponent,

@@ -1,0 +1,58 @@
+$headerSize: 64px;
+$spinnerSize: 100px;
+
+.content {
+  position: relative;
+  top: $headerSize;
+  height: calc(100% - #{$headerSize});
+
+  .filter {
+    display: block;
+  }
+  div.buttons {
+    button[mat-raised-button] {
+      margin-right: 5px;
+    }
+  }
+}
+
+div.spinner {
+  position: relative;
+  top: calc(50% - #{$spinnerSize});
+  left: calc(50% - #{$spinnerSize});
+  max-width: $spinnerSize;
+}
+
+.angM-table {
+  position: relative;
+  top: 10px;
+  width: 80%;
+  margin: auto;
+  div.mat-elevation-z8 {
+    overflow: auto;
+    max-height: 550px;
+    border-radius: 10px;
+  }
+}
+
+.mat-form-field {
+  position: relative;
+  font-size: 14px;
+  width: 30%;
+}
+
+mat-paginator {
+  position: relative;
+  top: 5px;
+  z-index: 101;
+  border-radius: 10px;
+}
+
+mat-header-cell {
+  font-weight: bold;
+}
+
+mat-header-cell,
+mat-cell {
+  justify-content: center;
+}
