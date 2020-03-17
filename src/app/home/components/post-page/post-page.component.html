@@ -1,0 +1,57 @@
+<div class="content">
+  <div class="angM-table" [hidden]="showSpinner">
+    <div class="buttons">
+      <button mat-raised-button color="accent" (click)="formPost()">New Post</button>
+      <button mat-raised-button color="primary" (click)="getPost(76)">Get Post 76</button>
+      <button mat-raised-button color="warn" (click)="deletePost(76)">Delete Post 76</button>
+    </div>
+
+    <div class="filter">
+      <!-- Filter -->
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ervin">
+      </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8" [hidden]="showSpinner">
+      <!-- Table -->
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+
+        <!-- UserID Column -->
+        <ng-container matColumnDef="userId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> UserID </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.userId}} </mat-cell>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+        </ng-container>
+
+        <!-- Body Column -->
+        <ng-container matColumnDef="body">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Body </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.body}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <!-- Paginator -->
+    <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+  </div>
+  <div class="spinner" [hidden]="!showSpinner">
+    <!-- Spinner -->
+    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
+  </div>
+</div>
